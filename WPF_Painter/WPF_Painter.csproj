@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="diagonal-line.png" />
+    <None Remove="ellipse-outline-shape-variant.png" />
+    <None Remove="eraser.png" />
+    <None Remove="polyline.png" />
+    <None Remove="rectangular-shape-outline.png" />
+    <None Remove="trash.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Extended.Wpf.Toolkit" Version="4.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="diagonal-line.png" />
+    <Resource Include="ellipse-outline-shape-variant.png" />
+    <Resource Include="eraser.png" />
+    <Resource Include="polyline.png" />
+    <Resource Include="rectangular-shape-outline.png" />
+    <Resource Include="trash.png" />
+  </ItemGroup>
+
+</Project>
