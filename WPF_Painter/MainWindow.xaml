@@ -11,7 +11,7 @@
         <Menu x:Name="myMenu" Height="20">
             <MenuItem Header="檔案">
                 <CheckBox Content="顯示工具列"/>
-                <MenuItem Header="儲存畫布"/>
+                <MenuItem x:Name="saveMenuItem" Header="儲存畫布" Click="saveMenuItem_Click"/>
             </MenuItem>
         </Menu>
         <ToolBarTray Height="50" HorizontalAlignment="Left" VerticalAlignment="Top" Width="1000">

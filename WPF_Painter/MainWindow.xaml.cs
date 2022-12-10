@@ -1,10 +1,13 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
+using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Ink;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
 namespace WPF_Painter
@@ -270,6 +273,30 @@ namespace WPF_Painter
         {
             myCanvas.Children.Clear();
             actionType = "Draw";
+        }
+
+        private void saveMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            int w = Convert.ToInt32(myCanvas.RenderSize.Width);
+            int h = Convert.ToInt32(myCanvas.RenderSize.Height);
+
+            RenderTargetBitmap rtb = new RenderTargetBitmap(w, h, 64d, 64d, PixelFormats.Default);
+            rtb.Render(myCanvas);
+            PngBitmapEncoder png = new PngBitmapEncoder();
+            png.Frames.Add(BitmapFrame.Create(rtb));
+
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Title = "儲存畫布";
+            saveFileDialog.DefaultExt = "*.png";
+            saveFileDialog.Filter = "png檔案(*.png)|*.png|jpg檔案(*.jpg)|*.jpg|所有檔案(*.*)|*.*";
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                string path = saveFileDialog.FileName; ;
+                using (var fs = File.Create(path))
+                {
+                    png.Save(fs);
+                }
+            }
         }
 
         private void DisplayStatus()
