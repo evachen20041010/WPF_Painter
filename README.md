@@ -1,2 +1,1 @@
-# WPF_Painter
-WPF 小畫家
+# WPF 小畫家
